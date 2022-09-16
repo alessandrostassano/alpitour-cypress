@@ -6,7 +6,7 @@ describe('Login with fixtures data', ()=> {
             cy.fixture('userData.json').then(userData => {
                 //console.log(userData)
                 const username = userData.username
-                const password = userData.password
+                const password = "cavallo"
                 cy.get('.w-80 > :nth-child(1) > .input').type(username)
                 cy.get('.relative.flex > .my-2 > .input').type(password)
                 cy.get('.w-80 > #btn').click()
@@ -14,9 +14,9 @@ describe('Login with fixtures data', ()=> {
         }  
     })
 
-    it("I'm now on the page",() => {
-        if(cy.url().should('include', 'www.alpitour.it')){
-            console.log("You are logging successfully!")
-        } 
+    it("The wrong's credentials banner is correctly presented",() => {
+       if(cy.get('.w-80 > .px-6').should('be.visible')){
+           console.log("Credentials are wrong. You dont have permission to log in")
+       }
     })
 })
