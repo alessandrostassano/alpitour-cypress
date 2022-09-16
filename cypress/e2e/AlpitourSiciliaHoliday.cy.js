@@ -1,4 +1,4 @@
-describe('Alpitour Test', () => {
+describe('Alpitour Sicilia Test', () => {
   it('Visits Alpitour site', () => {
     cy.visit('https://www.alpitour.it/', { timeout: 10000})
   })
@@ -34,7 +34,4 @@ describe('Alpitour Test', () => {
     cy.get(':nth-child(1) > [style="display: flex; align-items: flex-end;"] > [style="flex-grow: 1; width: 100%;"] > .react-calendar__month-view__days > :nth-child(28)').click()
     cy.get(':nth-child(2) > .MuiButtonBase-root > .MuiButton-label > .NewSearchBarComponent_buttonWithInnerHtml__1ICtn > p').click()
   })
-
-
-  
 })
