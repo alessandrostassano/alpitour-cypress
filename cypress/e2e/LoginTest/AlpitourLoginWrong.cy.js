@@ -19,6 +19,7 @@ describe('Login with fixtures data', ()=> {
        if(cy.get('.w-80 > .px-6').should('be.visible')){
            cy.get('.w-80 > .px-6').screenshot('wrongLogin/wrong-clicking-login')
            console.log("Credentials are wrong. You dont have permission to log in")
+           
        }
     })
 })
