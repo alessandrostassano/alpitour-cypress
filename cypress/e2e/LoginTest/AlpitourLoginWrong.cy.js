@@ -6,8 +6,10 @@ describe('Login with fixtures data', ()=> {
             cy.fixture('userData.json').then(userData => {
                 const username = userData.username
                 const password = "cavallo"
-                cy.get('.w-80 > :nth-child(1) > .input').type(username)
-                cy.get('.relative.flex > .my-2 > .input').type(password)
+                cy.get('.w-80 > :nth-child(1) > .input').as('username')
+                cy.get('@username').type(username)
+                cy.get('.relative.flex > .my-2 > .input').as('password')
+                cy.get('@password').type(password)
                 cy.get('.w-80 > #btn').click()
             }) 
         }  
