@@ -9,13 +9,14 @@ describe('Login with fixtures data', ()=> {
                 const password = userData.password
                 cy.get('.w-80 > :nth-child(1) > .input').type(username)
                 cy.get('.relative.flex > .my-2 > .input').type(password)
-                cy.get('.w-80 > #btn').click()
+                cy.get('.w-80 > #btn').click()               
             }) 
         }  
     })
 
     it("I'm now on the page",() => {
         if(cy.url().should('include', 'www.alpitour.it')){
+            cy.screenshot({capture: 'fullPage'}).screenshot('correctLogin/correct-clicking-login')
             console.log("You are logging successfully!")
         } 
     })

@@ -4,7 +4,6 @@ describe('Login with fixtures data', ()=> {
 
         if(cy.url().should('include', 'login')){
             cy.fixture('userData.json').then(userData => {
-                //console.log(userData)
                 const username = userData.username
                 const password = "cavallo"
                 cy.get('.w-80 > :nth-child(1) > .input').type(username)
@@ -16,6 +15,7 @@ describe('Login with fixtures data', ()=> {
 
     it("The wrong's credentials banner is correctly presented",() => {
        if(cy.get('.w-80 > .px-6').should('be.visible')){
+           cy.get('.w-80 > .px-6').screenshot('wrongLogin/wrong-clicking-login')
            console.log("Credentials are wrong. You dont have permission to log in")
        }
     })
