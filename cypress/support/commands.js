@@ -23,17 +23,3 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
-Cypress.Commands.add('login', (username, password) => { 
-        cy.visit('https://account.alpitourworld.it/login?client_id=54sv0h38v4k60cugm13pclh6lq&redirect_uri=https://www.alpitour.it/')
-        if(cy.url().should('include', 'login')){
-            cy.fixture('userData.json').then(userData => {
-                const username = userData.username
-                const password = userData.password
-                cy.get('.w-80 > :nth-child(1) > .input').type(username)
-                cy.get('.relative.flex > .my-2 > .input').type(password)
-                cy.get('.w-80 > #btn').click()               
-            }) 
-        }  
-    
-})
