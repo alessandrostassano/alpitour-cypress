@@ -34,6 +34,5 @@ Cypress.Commands.add('login', (username, password) => {
                 cy.get('.relative.flex > .my-2 > .input').type(password)
                 cy.get('.w-80 > #btn').click()               
             }) 
-        }  
-    
+        }     
 })
