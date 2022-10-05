@@ -36,18 +36,22 @@ describe('Alpitour Maldive Test', () => {
     cy.log('Milano Malpensa MPX correctly choosed')
   })
 
-  it('I click 23 October and i go to the results page', () => {
-    cy.get(':nth-child(1) > [style="display: flex; align-items: flex-end;"] > [style="flex-grow: 1; width: 100%;"] > .react-calendar__month-view__days > :nth-child(28)').click()
-    cy.get(':nth-child(2) > .MuiButtonBase-root > .MuiButton-label > .NewSearchBarComponent_buttonWithInnerHtml__1ICtn > p').click()
-    cy.get('#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click()
-    cy.log('Specific date choosed')
+  it('I click the first date available', () => {
+    cy.xpath("(//div[@class='react-calendar__viewContainer']//div[@class='react-calendar__month-view__days']//*[@type='button'][not(@disabled)])[1]").click()
+    cy.xpath("(//div[@class='react-calendar__viewContainer']//div[@class='react-calendar__month-view__days']//*[@type='button'][not(@disabled)]//div[@class='NewSearchBarComponent_tilePrice__3m01A'])[1]").invoke('text').then(priceValue)
+    cy.get(':nth-child(2) > .MuiButtonBase-root').click()
   })
 
-  it('Maldive results for this day should be 37 and the cards in the first page 9', () => {
-  cy.get('.ResultListComponent_openFilterButton__2A7Ks > div > p')
-  .should('have.text', 'Filtra i 37 risultati')
-  cy.get('div[class="OfferContainerComponent_cardWrapper__2p9tp OfferContainerComponent_horizontal__2apJh undefined"]')
-  .its('length')
-  .should('eq', 9)
-  })
+  it('I controll the first result value and i compare the price', () => {
+  
+  cy.xpath("(//div//div[@class='OfferContainerComponent_cardWrapper__2p9tp OfferContainerComponent_horizontal__2apJh undefined']//div[@class='OfferContainerComponent_price__1uOrV OfferContainerComponent_grey__143b1 OfferContainerComponent_full__3ypZA']//span)[1]").invoke('text').then((priceValue2) => {
+  if(expect(priceValue).to.equal(priceValue2)){
+      cy.log("The price is equal! Test passed")
+    } else {
+      cy.log("The price is not equal! Warning in the next step!")
+    }
+    })
+  }) 
 })
+
+

@@ -5,6 +5,7 @@ describe('Alpitour Sicilia Test', () => {
 
   it('should check correct url', () => {
     cy.url().should('include', 'alpitour.it')
+    console.log("ciao")
   })
 
   it('Should check for correct element of the page and click it', () => {

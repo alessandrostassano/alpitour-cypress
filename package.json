@@ -27,5 +27,8 @@
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.31.0",
     "cypress-xpath": "^2.0.1"
+  },
+  "env": {
+    "allureResultsPath": "allure-results"
   }
 }
