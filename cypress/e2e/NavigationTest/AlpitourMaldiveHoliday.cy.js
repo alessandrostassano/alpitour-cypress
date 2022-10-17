@@ -71,6 +71,7 @@ describe('Alpitour Maldive Test', () => {
     cy.xpath("//div[@class='ProductRecapComponent_price__1YWqz']")
     .invoke('text')
     .then((pdpPrice) => {
+      
         const pdpPrice1 = pdpPrice.replace(/[^\d]/g, '')
         if(expect(plpPrice1).to.eq(pdpPrice1)) {
           cy.log('The price is not equal')
