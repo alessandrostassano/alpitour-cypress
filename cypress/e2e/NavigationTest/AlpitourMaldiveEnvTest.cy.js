@@ -83,12 +83,20 @@ describe('Alpitour Maldive Test', () => {
   })
 
   it('I continue to the checkout detail', () => {
-    cy.xpath("//div[@class='ProductRecapComponent_button__1a0zU false']").click()
+  cy.wait(5000)
+  cy.xpath("//div[contains(text(),'CONTINUA')]")
+  .should('be.visible')
+  .then((e) => {
+    Cypress.$(e).click();
+  })
+    /*cy.wait(5000)
+    cy.xpath("//div[contains(text(),'CONTINUA')]").click()*/
   })
   
-  it('I continue to the checkout detail', () => {
+  it('I click prosegui button and i enter on the site', () => {
     cy.xpath("(//div[@class='ReceiptComponent_btnWrap__VB0BL']//button[contains(text(),'Procedi')])[2]").scrollIntoView()
     .click()
+    cy.newLogin('username', 'password')
   })
 
 })

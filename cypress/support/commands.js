@@ -36,3 +36,15 @@ Cypress.Commands.add('login', (username, password) => {
             }) 
         }     
 })
+
+Cypress.Commands.add('newLogin', (username, password) => { 
+   
+        cy.fixture('testCredentials.json').then(testCredentials => {
+            const username = testCredentials.username
+            const password = testCredentials.password
+            cy.xpath("//div[@class='my-2 relative justify-center']//input[@type='email']").type(username)
+            cy.xpath("//div[@class='my-2 relative justify-center w-full -my-0']//input[@type='password']").type(password)
+            cy.xpath("(//button[@id='btn'])[1]").click()               
+        }) 
+    }     
+)
